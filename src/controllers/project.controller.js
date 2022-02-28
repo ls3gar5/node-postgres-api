@@ -25,14 +25,17 @@ export async function createProject(req, res) {
             message: 'Something goes wrong'
         });
     }
-
-
 }
 
 export async function getProjects(req, res){
     try {
         
-        let projects = await Project.findAll();
+        let projects = await Project.findAll({
+            attributes: ['id', 'name'],
+            order: [
+                    ['id', 'DESC']
+                ]
+        });
         if(projects){
             res.json({data: projects});
         }
@@ -43,7 +46,6 @@ export async function getProjects(req, res){
         res.status(500).json({
             message: 'Something goes wrong'
         });
-        
     }
 }
 
@@ -62,4 +64,31 @@ export function getProjectById(req, res){
                     message: 'Something goes wrong'
                 });
     });
+}
+
+export async function updateProjectById (req, res){
+
+    const { id } = req.params;
+    const { name, priority, description, deleverydate} = req.body;
+
+    var success = await Project.update({
+        name,
+        priority,
+        description,
+        deleverydate
+    }, {
+        fields:['name', 'priority', 'description', 'deleverydate'],
+        where: {id: id},
+        returning : true
+    });
+
+    if (success[0] >=1) {
+        console.log(success);
+        return res.status(200).json({
+            message:'Success'
+        });
+    }
+
+    return res.status(404).json({ message: 'Not Found'});
+
 }

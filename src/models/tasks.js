@@ -1,7 +1,8 @@
 import  Sequelize  from "sequelize";
 import { sequelize } from '../database/database';
+import Project from "./projects";
 
-const Task = sequelize.define('task',{
+const Task = sequelize.define('tasks',{
         id:{
             type: Sequelize.INTEGER,
             primaryKey:true
@@ -18,5 +19,6 @@ const Task = sequelize.define('task',{
 },{
     timestamps: false
 });
+
 
 export default Task;
