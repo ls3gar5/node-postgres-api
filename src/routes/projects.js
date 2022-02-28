@@ -1,14 +1,14 @@
 import { Router } from "express";
+import {createProject, getProjects, getProjectById, updateProjectById} from '../controllers/project.controller'
+
 const router = Router();
-import {createProject, getProjects, getProjectById} from '../controllers/projects.controller'
 
-router
-    .post('/', createProject)
+router.post('/', createProject)
 
-router
-    .get('/', getProjects);
+router.get('/', getProjects);
 
-router
-    .get('/:id', getProjectById);
+router.get('/:id', getProjectById);
+
+router.put('/:id', updateProjectById);
 
 export default router;
