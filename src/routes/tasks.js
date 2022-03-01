@@ -5,7 +5,7 @@ const router = Router();
 router.post('/', createTask);
 router.get('/:id', getTaskById);
 router.get('/', getTasks);
-router.get('/projectid/:id', getTasksByProjectId);
+router.get('/project/:projectid', getTasksByProjectId);
 router.put('/:id', updateTaskById);
 
 export default router;

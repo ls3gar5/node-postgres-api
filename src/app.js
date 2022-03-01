@@ -1,5 +1,6 @@
 import express, {json} from 'express';
 import morgan from 'morgan';
+import '@babel/polyfill';
 
 //importing routes
 import projectRoutes from './routes/projects';
