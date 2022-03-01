@@ -64,21 +64,20 @@ export async function getTaskById(req, res) {
 }
 
 
-export async function getTasksByProjectId(req, res, next) {
-    const {id} = req.params;
+export async function getTasksByProjectId(req, res) {
+    const {projectid} = req.params;
     try {
-        let tasks = await Task.findAll({ where: { projectid: id } });
+        let tasks = await Task.findAll({ where: { projectid } });
 
         if (!tasks || tasks.length == 0) {
             console.log('404 Not found');
 
-            res.status(404).json({
+            return res.status(404).json({
                 message: 'No records'
             });    
-            next();
-        }else{
-            res.json({data: tasks});
         }
+            
+        res.json({data: tasks});
 
         
     } catch (error) {
