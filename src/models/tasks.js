@@ -1,5 +1,5 @@
 import  Sequelize  from "sequelize";
-import { sequelize } from '../database/database';
+import { sequelize } from '../database/postgreSqlDatabase';
 import Project from "./projects";
 
 const Task = sequelize.define('tasks',{

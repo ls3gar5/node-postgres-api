@@ -52,7 +52,7 @@ export async function getProjects(req, res){
 export function getProjectById(req, res){
     
         const { id }= req.params;
-        let projectName=''; 
+        
         Project.findByPk(id).then(project => {
             
                 res.json({data: project});

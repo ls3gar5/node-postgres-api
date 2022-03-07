@@ -14,5 +14,4 @@ export const sequelize = new Sequelize(
             idle:200000
         }
     }
-
 )

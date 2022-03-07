@@ -44,7 +44,6 @@ export async function getTasks(req, res){
 
 export async function getTaskById(req, res) {
     const {id} = req.params;
-    let taskName = '';
 
     try {
 
