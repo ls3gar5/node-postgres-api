@@ -1,4 +1,5 @@
 import Product from "../models/Product";
+import '../config/log';
 
 export async function createProduct(req, res) {
 
@@ -52,6 +53,8 @@ export async function getProductById(req, res) {
     try {
         let prodictById = await Product.findById(productId, { "_id": 1, "name": 1 }); //6221f9b6c0c77a7e898f2a4e
         if (prodictById) {
+            winston.info('Mensaje Info');
+            winston.error('Error');
             res.json({
                 data: prodictById
             })
